@@ -1,0 +1,296 @@
+<div class="view-in-ts">
+  <a href="https://titan.intel471.com/search/FreeText:{{block.entity.value}}">Global Search in Titan {{fa-icon "external-link-square" class="external-link-icon"}}</a>
+</div>
+{{#if details.indicators}}
+    <div>
+        <span class="p-title">{{fa-icon "bug" fixedWidth=true}} Indicator Details </span>
+    </div>
+    <div>
+        {{#each details.indicators as |indicator|}}
+            {{#if (eq indicator.data.confidence "high")}}
+              <div>
+                <span class="p-value" style="color:red">Indicator Type:</span>
+                <span class="p-value"><a href="https://titan.intel471.com/malware/indicator/{{indicator.uid}}">{{indicator.data.indicator_type}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+              </div>
+            {{/if}}
+            {{#if (eq indicator.data.confidence "medium")}}
+              <div>
+                <span class="p-value" style="color:orange">Indicator Type:</span>
+                <span class="p-value"><a href="https://titan.intel471.com/malware/indicator/{{indicator.uid}}">{{indicator.data.indicator_type}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.data.threat.type}}
+              <div>
+                <span class="p-key">Threat Type:</span>
+                <span class="p-value">{{indicator.data.threat.type}}<br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.data.threat.data.family}}
+              <div>
+                <span class="p-key">Family:</span>
+                <span class="p-value"><a href="https://titan.intel471.com/malware/{{indicator.data.threat.uid}}">{{indicator.data.threat.data.family}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.data.threat.expiration}}
+              <div>
+                <span class="p-key">Expiration:</span>
+                <span class="p-value">{{moment-format indicator.data.threat.expiration timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.data.context.description}}
+              <div>
+                <span class="p-key">Context Description:</span>
+                <span class="p-value">{{indicator.data.context.description}}<br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.data.indicator_data.url}}
+              <div>
+                <span class="p-key">Indicator URL:</span>
+                <span class="p-value">{{indicator.data.indicator_data.url}}</span>
+              </div>
+            {{/if}}
+            {{#if indicator.activity.first}}
+              <div>
+                <span class="p-key">First Seen:</span>
+                <span class="p-value">{{moment-format indicator.activity.first timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.activity.last}}
+              <div>
+                <span class="p-key">Last Seen:</span>
+                <span class="p-value">{{moment-format indicator.activity.last timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if indicator.last_updated}}
+            <div>
+              <span class="p-key">Last Updated:</span>
+              <span class="p-value">{{moment-format indicator.last_updated timeZone=timezone}}<br></span>
+            </div>
+            {{/if}}
+            <hr>
+        {{/each}}
+    </div>
+{{/if}}
+
+{{#if details.iocs}}
+    <div>
+        <span class="p-title">{{fa-icon "shield-alt" fixedWidth=true}} IOC Details </span>
+    </div>
+    <div>
+        {{#each details.iocs as |ioc|}}
+            {{#if ioc.type}}
+              <div>
+                <span class="p-key">IOC Type:</span>
+                <span class="p-value">{{ioc.type}}<br></span>
+              </div>
+            {{/if}}
+            {{#if ioc.activeFrom}}
+              <div>
+                <span class="p-key">Active From:</span>
+                <span class="p-value">{{moment-format ioc.activeFrom timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if ioc.activeTill}}
+              <div>
+                <span class="p-key">Active Until:</span>
+                <span class="p-value">{{moment-format ioc.activeTill timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if ioc.links.reports}}
+              {{#each ioc.links.reports as |report|}}
+                {{#if report.subject}}
+                  <div>
+                    <span class="p-key">Report Subject:</span>
+                    <span class="p-value"><a href="{{report.portalReportUrl}}">{{report.subject}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+                  </div>
+                {{/if}}
+                {{#if report.admiraltyCode}}
+                  <div>
+                    <span class="p-key">Admiralty Code:</span>
+                    <span class="p-value">{{report.admiraltyCode}}<br></span>
+                  </div>
+                {{/if}}
+                {{#if report.released}}
+                  <div>
+                    <span class="p-key">Report Released:</span>
+                    <span class="p-value">{{moment-format report.released timeZone=timezone}}<br></span>
+                  </div>
+                {{/if}}
+              {{/each}}
+            {{/if}}
+            <hr>
+        {{/each}}
+    </div>
+{{/if}}
+
+
+{{#if details.cveReports}}
+    <div>
+        <span class="p-title">{{fa-icon "bell-exclamation" fixedWidth=true}} CVE Details </span>
+    </div>
+    <div>
+        {{#each details.cveReports as |cve|}}
+            {{#if cve.data.cve_report.name}}
+              <div>
+                <span class="p-key">CVE Name:</span>
+                <span class="p-value"><a href="https://titan.intel471.com/report/cve/{{cve.uid}}">{{cve.data.cve_report.name}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.risk_level "high")}}
+              <div>
+                <span class="p-key">Risk Level:</span>
+                <span class="p-value" style="color:red">{{cve.data.cve_report.risk_level}}<br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.risk_level "medium")}}
+              <div>
+                <span class="p-key">Risk Level:</span>
+                <span class="p-value" style="color:orange">{{cve.data.cve_report.risk_level}}<br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.risk_level "low")}}
+              <div>
+                <span class="p-key">Risk Level:</span>
+                <span class="p-value" style="color:green">{{cve.data.cve_report.risk_level}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.cve_type}}
+              <div>
+                <span class="p-key">CVE Type:</span>
+                <span class="p-value">{{cve.data.cve_report.cve_type}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.vendor_name}}
+              <div>
+                <span class="p-key">Vendor Name:</span>
+                <span class="p-value">{{cve.data.cve_report.vendor_name}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.product_name}}
+              <div>
+                <span class="p-key">Affected Product:</span>
+                <span class="p-value">{{cve.data.cve_report.product_name}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.cvss_score.v3}}
+              <div>
+                <span class="p-key">CVSS V3 Score:</span>
+                <span class="p-value">{{cve.data.cve_report.cvss_score.v3}}<br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.exploit_status.available true)}}
+              <div>
+                <span class="p-key">Exploit Code Available:</span>
+                <span class="p-value" style="color:red">{{cve.data.cve_report.exploit_status.available}}<br></span>
+              </div>
+            {{else}}
+              <div>
+                <span class="p-key">Exploit Code Available:</span>
+                <span class="p-value">false<br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.exploit_status.weaponized true)}}
+              <div>
+                <span class="p-key">Exploit Weaponized:</span>
+                <span class="p-value" style="color:red">{{cve.data.cve_report.exploit_status.weaponized}}<br></span>
+              </div>
+            {{else}}
+              <div>
+                <span class="p-key">Exploit Weaponized:</span>
+                <span class="p-value">false<br></span>
+              </div>
+            {{/if}}
+            {{#if (eq cve.data.cve_report.exploit_status.productized true)}}
+              <div>
+                <span class="p-key">Exploit Productized:</span>
+                <span class="p-value" style="color:red">{{cve.data.cve_report.exploit_status.weaponized}}<br></span>
+              </div>
+            {{else}}
+              <div>
+                <span class="p-key">Exploit Productized:</span>
+                <span class="p-value">false<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.summary}}
+              <div>
+                <span class="p-key">Summary:</span>
+                <span class="p-value">{{cve.data.cve_report.summary}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.cve_status}}
+              <div>
+                <span class="p-key">CVE Status:</span>
+                <span class="p-value">{{cve.data.cve_report.cve_status}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.underground_activity}}
+              <div>
+                <span class="p-key">Underground Activity:</span>
+                <span class="p-value">{{cve.data.cve_report.underground_activity}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.underground_activity_summary}}
+              <div>
+                <span class="p-key">Underground Activity Summary:</span>
+                <span class="p-value">{{cve.data.cve_report.underground_activity_summary}}<br></span>
+              </div>
+            {{/if}}
+            {{#if cve.data.cve_report.counter_measures}}
+              <div>
+                <span class="p-key">Countermeasures:</span>
+                <span class="p-value">{{cve.data.cve_report.counter_measures}}<br></span>
+              </div>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
+
+{{#if details.reports}}
+    <div>
+        <span class="p-title">{{fa-icon "file-alt" fixedWidth=true}} Report Details </span>
+    </div>
+    <div>
+        {{#each details.reports as |report|}}
+            {{#if report.subject}}
+              <div>
+                <span class="p-key">Subject:</span>
+                <span class="p-value"><a href="{{report.portalReportUrl}}">{{report.subject}} {{fa-icon "external-link-square" class="external-link-icon"}}</a><br></span>
+              </div>
+            {{/if}}
+            {{#if report.admiraltyCode}}
+              <div>
+                <span class="p-key">Admiralty Code:</span>
+                <span class="p-value">{{report.admiraltyCode}}<br></span>
+              </div>
+            {{/if}}
+            {{#if report.created}}
+              <div>
+                <span class="p-key">Created:</span>
+                <span class="p-value">{{moment-format report.created timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if report.lastUpdated}}
+              <div>
+                <span class="p-key">Last Updated:</span>
+                <span class="p-value">{{moment-format report.lastUpdated timeZone=timezone}}<br></span>
+              </div>
+            {{/if}}
+            {{#if report.sourceCharacterization}}
+              <div>
+                <span class="p-key">Source Characterization:</span>
+                <span class="p-value">{{report.sourceCharacterization}}<br></span>
+              </div>
+            {{/if}}
+            {{#if report.tags}}
+              <h1 class="p-title">
+                  {{fa-icon "tags" fixedWidth=true}} Report Tags
+              </h1>
+              <div>
+                  {{#each report.tags as |tag| }}
+                      <span class="tag">{{tag}}</span>
+                  {{/each}}
+              </div>
+            {{/if}}
+        {{/each}}
+    </div>
+{{/if}}
