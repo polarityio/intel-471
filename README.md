@@ -4,7 +4,8 @@ The Polarity Intel 471 integration allows Polarity to search the Intel 471 API t
 
 
 Check out the integration below:
-![Intel471](https://user-images.githubusercontent.com/22529325/69731987-d766e500-10f8-11ea-9f9f-25b774097528.png =100x100)
+<img src="https://user-images.githubusercontent.com/22529325/69731987-d766e500-10f8-11ea-9f9f-25b774097528.png"  width="100px" height="150px">
+
 
 For more information on Intel471, please visit: [official website](https://intel471.com/)
 ## Intel471 Integration Options
