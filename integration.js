@@ -96,36 +96,39 @@ function doLookup(entities, options, cb) {
             entity,
             body: null
           };
-        } else if (res.statusCode === 401) {
-          result = {
-            err: 'Unauthorized',
-            detail: 'Request had Authorization header but token was missing or invalid. Please ensure your API token is valid.'
-          };
-        } else if (res.statusCode === 403) {
-          result = {
-            err: 'Access Denied',
-            detail: 'Not enough access permissions.'
-          };
-        } else if (res.statusCode === 404) {
-          result = {
-            err: 'Not Found',
-            detail: 'Requested item doesn’t exist or not enough access permissions.'
-          };
-        } else if (res.statusCode === 429) {
-          result = {
-            err: 'Too Many Requests',
-            detail: 'Daily number of requests exceeds limit. Check Retry-After header to get information about request delay.'
-          };
-        } else if (Math.round(res.statusCode / 10) * 10 === 500) {
-          result = {
-            err: 'Server Error',
-            detail: 'Something went wrong on our End (Intel471 API)'
-          };
         } else {
-          return done({
+          let error = {
             err: body,
             detail: `${body.error}: ${body.message}`
-          });
+          };
+          if (res.statusCode === 401) {
+            error = {
+              err: 'Unauthorized',
+              detail: 'Request had Authorization header but token was missing or invalid. Please ensure your API token is valid.'
+            };
+          } else if (res.statusCode === 403) {
+            error = {
+              err: 'Access Denied',
+              detail: 'Not enough access permissions.'
+            };
+          } else if (res.statusCode === 404) {
+            error = {
+              err: 'Not Found',
+              detail: 'Requested item doesn’t exist or not enough access permissions.'
+            };
+          } else if (res.statusCode === 429) {
+            error = {
+              err: 'Too Many Requests',
+              detail: 'Daily number of requests exceeds limit. Check Retry-After header to get information about request delay.'
+            };
+          } else if (Math.round(res.statusCode / 10) * 10 === 500) {
+            error = {
+              err: 'Server Error',
+              detail: 'Something went wrong on our End (Intel471 API)'
+            };
+          } 
+
+          return done(error);
         }
 
         done(null, result);
