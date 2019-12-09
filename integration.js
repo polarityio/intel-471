@@ -1,7 +1,6 @@
 "use strict";
 
 const request = require("request");
-const _ = require("lodash");
 const config = require("./config/config");
 const async = require("async");
 const fs = require("fs");
@@ -219,6 +218,6 @@ function validateOptions(options, callback) {
 
 module.exports = {
   doLookup,
-  startupp,
+  startup,
   validateOptions
 };
