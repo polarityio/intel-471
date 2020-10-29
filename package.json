@@ -1,12 +1,12 @@
 {
   "main": "./integration.js",
   "name": "Intel471",
-  "version": "3.0.0-beta",
+  "version": "3.0.2-beta",
   "private": true,
   "dependencies": {
-    "request": "^2.88",
-    "lodash": "^4.17.11",
     "async": "^2.6",
-    "node-cache": "^4.2.0"
+    "lodash": "^4.17.20",
+    "node-cache": "^4.2.0",
+    "request": "^2.88"
   }
 }
