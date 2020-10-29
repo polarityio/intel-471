@@ -1,47 +1,47 @@
 {{#if details.indicatorTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Indicator Count: {{details.indicatorTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.cveReportsTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">CVE Report Count: {{details.cveReportsTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.spotReportsTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Spot Report Count: {{details.spotReportsTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.iocTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">IOC Count: {{details.iocTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.eventTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Event Count: {{details.eventTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.reportTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Report Count: {{details.reportTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.postTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Post Count: {{details.postTotalCount}}</span>
   </span>
 {{/if}}
 {{#if details.entityTotalCount}}
-  <span class="integration-summary-tag integration-background-color integration-border-color">
+  <span {{on "click" (optional this.scrollToIntegration)}} class="integration-summary-tag integration-background-color integration-border-color">
     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
     <span class="integration-text-color">Entity Count: {{details.entityTotalCount}}</span>
   </span>
