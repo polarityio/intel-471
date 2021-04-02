@@ -24,13 +24,7 @@ module.exports = {
    */
   description:
     "Intel 471 is the premier provider of cybercrime intelligence. Intel 471 provides adversary and malware intelligence for leading intelligence, security and fraud teams.",
-  entityTypes: ['IPv4', 'hash', 'email', 'domain', 'url'],
-  customTypes:[
-    {
-        key: 'cve',
-        regex: /CVE-(1999|2\d{3})-(0\d{2}[1-9]|[1-9]\d{3,})/
-    }
-  ],
+  entityTypes: ['IPv4', 'hash', 'email', 'domain', 'cve'],
   /**
    * An array of style files (css or less) that will be included for your integration. Any styles specified in
    * the below files can be used in your custom template.
@@ -39,6 +33,7 @@ module.exports = {
    * @optional
    */
   styles: ["./styles/i471.less"],
+  defaultColor: 'light-pink',
   /**
    * Provide custom component logic and template for rendering the integration details block.  If you do not
    * provide a custom template and/or component then the integration will display data as a table of key value

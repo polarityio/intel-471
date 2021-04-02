@@ -63,11 +63,16 @@ function doLookup(entities, options, cb) {
         user: options.userName,
         pass: options.apiKey
       },
-      qs: {
-        text: `${entity.value}`
-      },
       json: true
     };
+
+    if (entity.type != 'cve') {
+      requestOptions.qs = {ioc: `${entity.value}`}
+    } else if (entity.type === 'cve') {
+      requestOptions.qs = {cveReport: `${entity.value}`}
+    } else {
+      return;
+    }
 
     Logger.trace({ uri: requestOptions }, "Request URI");
 
@@ -125,7 +130,7 @@ function doLookup(entities, options, cb) {
               err: 'Server Error',
               detail: 'Something went wrong on our End (Intel471 API)'
             };
-          } 
+          }
 
           return done(error);
         }
