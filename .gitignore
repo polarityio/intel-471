@@ -29,3 +29,9 @@ README.html
 
 # Ignored installed NPM modules
 node_modules/
+
+# Ignore VSCode Modules 
+*.history
+.histoy
+*.vscode
+.vscode
