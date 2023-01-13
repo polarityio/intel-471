@@ -1,7 +1,7 @@
 {
-  "main": "./integration.js",
   "name": "Intel471",
-  "version": "3.0.3-beta",
+  "version": "3.0.4-beta",
+  "main": "./integration.js",
   "private": true,
   "dependencies": {
     "async": "^2.6",
