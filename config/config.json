@@ -3,16 +3,8 @@
   "name": "Intel 471",
   "acronym": "471",
   "description": "Intel 471 is the premier provider of cybercrime intelligence. Intel 471 provides adversary and malware intelligence for leading intelligence, security and fraud teams.",
-  "entityTypes": [
-    "IPv4",
-    "hash",
-    "email",
-    "domain",
-    "cve"
-  ],
-  "styles": [
-    "./styles/i471.less"
-  ],
+  "entityTypes": ["IPv4", "MD5", "SHA1", "SHA256", "email", "domain", "cve"],
+  "styles": ["./styles/i471.less"],
   "defaultColor": "light-pink",
   "block": {
     "component": {
@@ -29,13 +21,6 @@
     "template": {
       "file": "./templates/i471-summary.hbs"
     }
-  },
-  "request": {
-    "cert": "",
-    "key": "",
-    "passphrase": "",
-    "ca": "",
-    "proxy": ""
   },
   "logging": {
     "level": "info"
